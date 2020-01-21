@@ -1,7 +1,7 @@
 PROGNAME=life-test
 OBJS=$(patsubst %.c, %.o, $(wildcard *.c))
 
-CFLAGS=-I../src -I../unity -I. -std=c99
+CFLAGS=-I../src -I../unity -I. -std=c99 -Wall -Werror
 CXXFLAGS=-I../src -I../unity -I.
 VPATH=../src
 

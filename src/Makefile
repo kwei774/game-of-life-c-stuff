@@ -8,8 +8,8 @@ CFLAGS=-std=c99
 
 .PHONY: all clean
 
-all: 
-	arduino-cli compile
+# all: 
+	# arduino-cli compile
 
 clean:
 	rm -f *.o
