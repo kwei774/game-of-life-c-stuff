@@ -12,7 +12,6 @@ extern "C"
 
     void life_setup(void *);
     void life_loop(void *);
-    bool should_cell_be_alive(bool, int);
 
 #ifdef __cplusplus
 }
