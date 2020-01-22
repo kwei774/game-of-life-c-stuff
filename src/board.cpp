@@ -28,13 +28,11 @@ void set_status(int board_row, int board_column, bool futureStatus){
 
 int get_alive_neighbors(int board_row, int board_column)
 {
-    return 
-    get_status(board_row-1, board_column-1)+ 
-    get_status(board_row-1, board_column)+ 
-    get_status(board_row-1, board_column+1)+ 
-    get_status(board_row, board_column-1)+ 
-    get_status(board_row, board_column+1)+
-    get_status(board_row+1, board_column+1)+
-    get_status(board_row+1, board_column)+
-    get_status(board_row+1, board_column-1);
+        int counter = 0;
+        for(int i = board_row-1; i <= board_row+1; i++){
+            for (int j =  board_column-1; j <= board_column+1; j++){
+                counter = counter + get_status(i,j);
+            }
+        }
+        return counter;
 }
