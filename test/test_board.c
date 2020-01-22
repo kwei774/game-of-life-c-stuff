@@ -43,7 +43,44 @@ TEST(Board, set_board_with_multiple_cells){
     set_status(0, 0, true);
     TEST_ASSERT_TRUE(get_status(0, 0));
     TEST_ASSERT_FALSE(get_status(31, 63));
+}
 
+TEST(Board, get_neighbors_returns_0_on_blank_board){
+    initializeBoard();
+    TEST_ASSERT_EQUAL_INT(0, get_alive_neighbors(1, 1));
+}
+
+TEST(Board, get_neighbors_returns_1_board){
+    initializeBoard();
+    set_status(0,0,true);
+    TEST_ASSERT_EQUAL_INT(1, get_alive_neighbors(1, 1));
+}
+
+TEST(Board, get_neighbors_returns_2_board){
+    initializeBoard();
+    set_status(0,0,true);
+    set_status(1,0,true);
+    TEST_ASSERT_EQUAL_INT(2, get_alive_neighbors(1, 1));
+}
+
+TEST(Board, get_neighbors_returns_8_board){
+    initializeBoard();
+    set_status(0,0,true);
+    set_status(1,0,true);
+    set_status(2,0,true);
+    set_status(0,1,true);
+    set_status(2,1,true);
+    set_status(0,2,true);
+    set_status(1,2,true);
+    set_status(2,2,true);
+    TEST_ASSERT_EQUAL_INT(8, get_alive_neighbors(1, 1));
+}
+
+TEST(Board, get_neighbors_are_independent){
+    initializeBoard();
+    set_status(0,0,true);
+    TEST_ASSERT_EQUAL_INT(1, get_alive_neighbors(1, 1));
+    TEST_ASSERT_EQUAL_INT(0, get_alive_neighbors(10, 10));
 }
 
 TEST_GROUP_RUNNER(Board)
@@ -54,4 +91,9 @@ TEST_GROUP_RUNNER(Board)
     RUN_TEST_CASE(Board, board_initializes_as_all_dead)
     RUN_TEST_CASE(Board, set_board_single_cell_value)
     RUN_TEST_CASE(Board, set_board_with_multiple_cells)
+    RUN_TEST_CASE(Board, get_neighbors_returns_0_on_blank_board)
+    RUN_TEST_CASE(Board, get_neighbors_returns_1_board)
+    RUN_TEST_CASE(Board, get_neighbors_returns_2_board)
+    RUN_TEST_CASE(Board, get_neighbors_returns_8_board)
+    RUN_TEST_CASE(Board, get_neighbors_are_independent)
 }

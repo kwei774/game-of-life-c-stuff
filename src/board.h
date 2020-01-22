@@ -12,6 +12,7 @@ extern "C"
     bool should_cell_be_alive(bool, int);
     bool get_status(int, int);
     void set_status(int, int, bool);
+    int get_alive_neighbors(int, int);
 
 #ifdef __cplusplus
 }
