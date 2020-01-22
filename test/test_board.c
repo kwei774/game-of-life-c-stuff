@@ -23,9 +23,22 @@ TEST(Board, dead_cell_with_2_alive_neighbors_returns_dead){
     TEST_ASSERT_FALSE(should_cell_be_alive(false, 2));
 }
 
+TEST(Board, board_initializes_as_all_dead){
+    TEST_ASSERT_FALSE(get_status(0, 0));
+    TEST_ASSERT_FALSE(get_status(31, 63));
+}
+
+TEST(Board, sets_board_cell_value){
+    TEST_ASSERT_FALSE(get_status(0, 0));
+    set_status (0,0,true);
+    TEST_ASSERT_TRUE(get_status(0, 0));
+}
+
 TEST_GROUP_RUNNER(Board)
 {
     RUN_TEST_CASE(Board, live_cell_with_2or3_alive_neighbors_returns_alive)
     RUN_TEST_CASE(Board, live_cell_with_fewer_than_2_alive_neighbors_returns_dead)
     RUN_TEST_CASE(Board, dead_cell_with_2_alive_neighbors_returns_dead)
+    RUN_TEST_CASE(Board, board_initializes_as_all_dead)
+    RUN_TEST_CASE(Board, sets_board_cell_value)
 }

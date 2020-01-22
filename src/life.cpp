@@ -23,10 +23,3 @@ void life_setup(void *matrix)
 void life_loop(void *matrix)
 {
 }
-
-bool should_cell_be_alive(bool currentState, int liveNeighbors){
-    if ((currentState && liveNeighbors==2) || liveNeighbors==3){
-        return true;
-    }
-    return false;
-}
