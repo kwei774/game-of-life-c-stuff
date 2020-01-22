@@ -24,14 +24,26 @@ TEST(Board, dead_cell_with_2_alive_neighbors_returns_dead){
 }
 
 TEST(Board, board_initializes_as_all_dead){
+    initializeBoard();
     TEST_ASSERT_FALSE(get_status(0, 0));
     TEST_ASSERT_FALSE(get_status(31, 63));
 }
 
-TEST(Board, sets_board_cell_value){
+TEST(Board, set_board_single_cell_value){
+    initializeBoard();
     TEST_ASSERT_FALSE(get_status(0, 0));
     set_status (0,0,true);
     TEST_ASSERT_TRUE(get_status(0, 0));
+}
+
+TEST(Board, set_board_with_multiple_cells){
+    initializeBoard();
+    TEST_ASSERT_FALSE(get_status(0, 0));
+    TEST_ASSERT_FALSE(get_status(31, 63));
+    set_status(0, 0, true);
+    TEST_ASSERT_TRUE(get_status(0, 0));
+    TEST_ASSERT_FALSE(get_status(31, 63));
+
 }
 
 TEST_GROUP_RUNNER(Board)
@@ -40,5 +52,6 @@ TEST_GROUP_RUNNER(Board)
     RUN_TEST_CASE(Board, live_cell_with_fewer_than_2_alive_neighbors_returns_dead)
     RUN_TEST_CASE(Board, dead_cell_with_2_alive_neighbors_returns_dead)
     RUN_TEST_CASE(Board, board_initializes_as_all_dead)
-    RUN_TEST_CASE(Board, sets_board_cell_value)
+    RUN_TEST_CASE(Board, set_board_single_cell_value)
+    RUN_TEST_CASE(Board, set_board_with_multiple_cells)
 }
