@@ -42,7 +42,7 @@ TEST(Board, set_board_with_multiple_cells){
     TEST_ASSERT_FALSE(get_status(31, 63));
     set_status(0, 0, true);
     TEST_ASSERT_TRUE(get_status(0, 0));
-    TEST_ASSERT_FALSE(get_status(31, 63));
+    TEST_ASSERT_FALSE(get_status(31, 64));
 
 }
 
