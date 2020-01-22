@@ -1,10 +1,10 @@
 #include "board.h"
 
-bool cellArray[64][32];
+bool cellArray[32][64];
 
 void initializeBoard(){
-    for(int i = 0; i < 64; i++){
-        for (int j = 0; j < 32; j++){
+    for(int i = 0; i < 32; i++){
+        for (int j = 0; j < 64; j++){
             cellArray[i][j] = false;
         }
     }

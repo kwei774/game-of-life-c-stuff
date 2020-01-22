@@ -6,7 +6,7 @@ extern "C"
 {
 #endif
 #include <stdbool.h>
-    extern bool cellArray[64][32];
+    extern bool cellArray[32][64];
 
     void initializeBoard();
     bool should_cell_be_alive(bool, int);
