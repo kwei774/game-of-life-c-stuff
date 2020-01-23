@@ -2,6 +2,7 @@
 
 bool cellArray[32][64];
 
+
 void initializeBoard(){
     for(int i = 0; i < 32; i++){
         for (int j = 0; j < 64; j++){
@@ -35,4 +36,18 @@ int get_alive_neighbors(int board_row, int board_column)
             }
         }
         return counter;
+}
+
+void determine_next_state()
+{
+  
+    for(int i = 0; i < 32; i++){
+        for (int j = 0; j < 64; j++){
+            bool currentState = false;
+            int liveNeighbors = 0;
+            currentState = get_status(i,j);
+            liveNeighbors = get_alive_neighbors(i,j);
+            cellArray[i][j] = should_cell_be_alive(currentState,liveNeighbors);
+        }
+    } 
 }

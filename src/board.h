@@ -13,6 +13,7 @@ extern "C"
     bool get_status(int, int);
     void set_status(int, int, bool);
     int get_alive_neighbors(int, int);
+    void determine_next_state();
 
 #ifdef __cplusplus
 }

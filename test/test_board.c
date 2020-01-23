@@ -83,6 +83,17 @@ TEST(Board, get_neighbors_are_independent){
     TEST_ASSERT_EQUAL_INT(0, get_alive_neighbors(10, 10));
 }
 
+TEST(Board, blinker_test){
+    initializeBoard();
+    set_status(0,1,true);
+    set_status(1,1,true);
+    set_status(2,1,true);
+    determine_next_state();
+    TEST_ASSERT_TRUE(get_status(1, 0));
+    TEST_ASSERT_TRUE(get_status(1, 1));
+    TEST_ASSERT_TRUE(get_status(1, 2));
+}
+
 TEST_GROUP_RUNNER(Board)
 {
     RUN_TEST_CASE(Board, live_cell_with_2or3_alive_neighbors_returns_alive)
@@ -96,4 +107,5 @@ TEST_GROUP_RUNNER(Board)
     RUN_TEST_CASE(Board, get_neighbors_returns_2_board)
     RUN_TEST_CASE(Board, get_neighbors_returns_8_board)
     RUN_TEST_CASE(Board, get_neighbors_are_independent)
+    RUN_TEST_CASE(Board, blinker_test)
 }
